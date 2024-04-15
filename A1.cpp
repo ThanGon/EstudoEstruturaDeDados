@@ -42,20 +42,21 @@ int main() {
             cout << "Insira a posição para remoção (0 para inserir no fim)" << endl;
             cin >> posicao;
             removido = posicao > 0 ? lista->remove(posicao) : lista->removeDoFim();
-            cout << "Elemento removido: " << removido->valor << endl;
+            if (removido != NULL)
+                cout << "Elemento removido: " << removido->valor << endl;
             break;
         case 3:
             cout << "Insira o valor para busca" << endl;
             cin >> valor;
             busca = lista->buscaPorValor(valor);
-            if (get<1>(busca) != NULL)
+            if (get<0>(busca) != NULL)
                 cout << "Elemento na lista de valor: " << get<0>(busca)->valor << " na posição: " << get<1>(busca) << endl;
             break;
         case 4:
             cout << "Insira a posição para busca" << endl;
             cin >> valor;
             busca = lista->buscaPorPosicao(valor);
-            if (get<1>(busca) != NULL)
+            if (get<0>(busca) != NULL)
                 cout << "Elemento na lista de valor: " << get<0>(busca)->valor << " na posição: " << get<1>(busca) << endl;
             break;
         case 5:

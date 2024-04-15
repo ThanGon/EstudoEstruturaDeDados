@@ -58,9 +58,8 @@ no* no::removeDoFim() {
     no* atual = this;
     if (atual->prox == NULL) {
         cout << "Esvaziando lista" << endl;
-        no* removido = atual;
         this->valor = NULL;
-        return removido;
+        return nullptr;
     }
     while (atual->prox->prox != NULL) {
         atual = atual->prox;
@@ -72,16 +71,16 @@ no* no::removeDoFim() {
 
 tuple<no*, int>no::buscaPorValor(int valor) {
     no* atual = this;
-    int posicao = 1;
-    while (atual->prox != NULL) {
-        posicao++;
+    int posicao = 0;
+    while (atual != NULL) {
         if (atual->valor == valor) {
             return { atual, posicao };
         }
+        posicao++;
         atual = atual->prox;
     }
     cout << "Valor não encontrado" << endl;
-    return { NULL, NULL };
+    return { nullptr, NULL };
 }
 
 tuple<no*, int> no::buscaPorPosicao(int posicao) {

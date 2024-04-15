@@ -4,7 +4,7 @@
 #pragma execution_character_set( "utf-8" )
 
 using namespace std;
-using namespace lista_encadeada;
+using namespace ListaEncadeada;
 
 no::no(int valor) {
     this->valor = valor;

@@ -5,7 +5,7 @@
 #pragma execution_character_set( "utf-8" )
 
 using namespace std;
-using namespace lista_encadeada;
+using namespace ListaEncadeada;
 int main() {
     SetConsoleOutputCP(CP_UTF8);
     cout << "Insira o primeiro valor para iniciar a lista encadeada" << endl;

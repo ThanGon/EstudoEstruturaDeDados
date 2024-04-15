@@ -1,6 +1,6 @@
 #include <tuple>
 
-namespace lista_encadeada {
+namespace ListaEncadeada {
     class no {
     public:
         no(int valor);

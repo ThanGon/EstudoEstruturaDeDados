@@ -128,10 +128,13 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="A1.cpp" />
+    <ClCompile Include="A2.cpp" />
     <ClCompile Include="ListaEncadeada.cpp" />
+    <ClCompile Include="Pilha.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="ListaEncadeada.hpp" />
+    <ClInclude Include="Pilha.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

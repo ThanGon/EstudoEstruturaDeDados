@@ -9,6 +9,7 @@ pilha::pilha(int capa) {
 	this->capa = capa;
 	this->topo = -1;
 	this->pElementos = new float[capa];
+	cout << "Pilha criada com capacidade para " << capa << " elementos" << endl;
 }
 
 void pilha::empilha(float elemento) {
@@ -43,8 +44,9 @@ void pilha::imprimePilha() {
 		cout << "Pilha vazia" << endl;
 		return;
 	}
-	for (int i = 0; i <= this->topo; i++) {
-		cout << this->pElementos[i] << " ";
+	cout << endl;
+	for(int i = this->topo; i >= 0; i--) {
+		cout << this->pElementos[i] << "\r\n";
 	}
 	cout << endl;
 }

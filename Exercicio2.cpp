@@ -50,7 +50,4 @@ int main() {
 	}
 
 	return 0;
-	//p->empilha(1);
-	//p->empilha(2);
-	//p->imprimePilha();
 }

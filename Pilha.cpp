@@ -1,6 +1,8 @@
 #include "Pilha.hpp"
 #include <iostream>
 
+#define underline "\033[4m"
+#define no_underline "\033[24m"
 
 using namespace Pilha;
 using namespace std;
@@ -44,9 +46,9 @@ void pilha::imprimePilha() {
 		cout << "Pilha vazia" << endl;
 		return;
 	}
-	cout << endl;
+	cout << underline << endl;
 	for(int i = this->topo; i >= 0; i--) {
-		cout << this->pElementos[i] << "\r\n";
+		cout << "  " << this->pElementos[i] << "  \r\n";
 	}
-	cout << endl;
+	cout << no_underline <<  endl;
 }

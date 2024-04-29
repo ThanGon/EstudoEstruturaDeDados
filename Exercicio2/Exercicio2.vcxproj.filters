@@ -23,7 +23,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Pilha.hpp">
+    <ClInclude Include="Pilha.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

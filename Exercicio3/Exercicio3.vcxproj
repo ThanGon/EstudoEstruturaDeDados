@@ -21,8 +21,8 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{ee0847fe-7bdf-4d30-83f0-74c87533d406}</ProjectGuid>
-    <RootNamespace>Exercicio2</RootNamespace>
+    <ProjectGuid>{e7636099-a59a-45f1-aba6-b524359d0612}</ProjectGuid>
+    <RootNamespace>Exercicio3</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
@@ -127,11 +127,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Exercicio2.cpp" />
-    <ClCompile Include="Pilha.cpp" />
+    <ClCompile Include="Exercicio3.cpp" />
+    <ClCompile Include="Heap.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Pilha.h" />
+    <ClInclude Include="Heap.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -132,7 +132,7 @@
     <ClCompile Include="ListaEncadeada.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ListaEncadeada.hpp" />
+    <ClInclude Include="ListaEncadeada.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "ListaEncadeada.hpp"
+#include "ListaEncadeada.h"
 
 #pragma execution_character_set( "utf-8" )
 

@@ -1,4 +1,5 @@
 #include "Heap.h"
+#include <iostream>
 
 using namespace Heap;
 
@@ -14,7 +15,8 @@ tupla::tupla() {
 
 heap::heap(int capacidade) {
 	this->heapVetor = new tupla[capacidade];
-	this->capacidadeVetor = 0;
+	this->capacidadeVetor = capacidade;
+	this->capacidadeAtual = 0;
 }
 
 int heap::pai(int i) {
@@ -30,21 +32,31 @@ int heap::filhoDireita(int i) {
 }
 
 void heap::insere(tupla tupla) {
-	this->heapVetor[0] = tupla;
-	this->capacidadeVetor++;
-	heapify(capacidadeVetor, 0);
+	if (this->capacidadeAtual + 1 > capacidadeVetor ) {
+		std::cout << "Heap cheio" << std::endl;
+		return;
+	}
+	this->heapVetor[capacidadeAtual] = tupla;
+	this->capacidadeAtual++;
+	int i = this->capacidadeAtual - 1;
+	while (i > 0 && this->heapVetor[pai(i)].prioridade < this->heapVetor[i].prioridade) {
+		Heap::tupla temp = this->heapVetor[pai(i)];
+		this->heapVetor[pai(i)] = this->heapVetor[i];
+		this->heapVetor[i] = temp;
+		i = pai(i);
+	}
 }
 
 tupla heap::extraiMax() {
-	if (this->capacidadeVetor < 1) {
+	if (this->capacidadeAtual < 1) {
 		return tupla();
 	}
 	else {
 		// PENSAR NOS PONTEIROS
 		tupla max = this->heapVetor[0];
-		this->heapVetor[0] = this->heapVetor[this->capacidadeVetor - 1];
-		this->capacidadeVetor--;
-		heapify(this->capacidadeVetor, 0);
+		this->heapVetor[0] = this->heapVetor[this->capacidadeAtual - 1];
+		this->capacidadeAtual--;
+		heapify(this->capacidadeAtual, 0);
 		return max;
 	}
 }

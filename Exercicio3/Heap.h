@@ -15,7 +15,7 @@ namespace Heap {
 	{
 	public:
 		tupla* heapVetor;
-		int capacidadeVetor;
+		int capacidadeVetor, capacidadeAtual;
 		heap(int capacidade);
 		~heap();
 		void insere(tupla tupla);

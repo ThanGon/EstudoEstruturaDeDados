@@ -1,3 +1,4 @@
+#include <tuple>
 #pragma once
 
 namespace Heap {
@@ -17,11 +18,12 @@ namespace Heap {
 		tupla* heapVetor;
 		int capacidadeVetor, capacidadeAtual;
 		heap(int capacidade);
+		heap(tupla vetor[], int capacidade);
 		~heap();
 		void insere(tupla tupla);
 		tupla extraiMax();
 		void imprimeHeap();
-		tupla busca(int chave, int i = 0);
+		std::tuple<tupla, tupla, tupla, tupla>* busca(int chave);
 		void heapify(int tamanhoVetor, int i);
 		int pai(int i);
 		int filhoEsquerda(int i);

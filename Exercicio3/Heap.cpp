@@ -1,5 +1,8 @@
 #include "Heap.h"
 #include <iostream>
+#include <iterator>
+
+#pragma execution_character_set( "utf-8" )
 
 using namespace Heap;
 
@@ -18,6 +21,15 @@ heap::heap(int capacidade) {
 	this->capacidadeVetor = capacidade;
 	this->capacidadeAtual = 0;
 }
+// EQUIVALENTE A CONSTROIHEAP (CONSTRUTOR DE HEAP)
+heap::heap(tupla vetor[], int capacidade) {
+	this->heapVetor = vetor;
+	this->capacidadeVetor = capacidade;
+	this->capacidadeAtual = capacidade - 1;
+	for (int i = capacidade / 2; i >= 0; i--) {
+		heapify(capacidade, i);
+	}
+}
 
 int heap::pai(int i) {
 	return (i - 1) / 2;
@@ -32,7 +44,7 @@ int heap::filhoDireita(int i) {
 }
 
 void heap::insere(tupla tupla) {
-	if (this->capacidadeAtual + 1 > capacidadeVetor ) {
+	if (this->capacidadeAtual + 1 > capacidadeVetor) {
 		std::cout << "Heap cheio" << std::endl;
 		return;
 	}
@@ -62,26 +74,38 @@ tupla heap::extraiMax() {
 }
 
 void heap::imprimeHeap() {
-	// FALTA IMPRIMIR HEAP
+	for (int i = 0; i < this->capacidadeAtual; i++) {
+		std::cout << "Índice: " << i << "\t" << "Prioridade: " << this->heapVetor[i].prioridade << " :: " << "Elemento: " << this->heapVetor[i].elemento << std::endl;
+	}
 }
 
-tupla heap::busca(int chave, int i) {
-	if (this->heapVetor[i].prioridade < chave) {
-		return tupla();
+//tupla heap::busca(int chave, int i) {
+//	if (this->heapVetor[i].prioridade < chave) {
+//		return tupla();
+//	}
+//	if (this->heapVetor[i].prioridade == chave) {
+//		return this->heapVetor[i];
+//	}
+//	else {
+//		tupla esq = busca(chave, filhoEsquerda(i));
+//		tupla dir = busca(chave, filhoDireita(i));
+//		if (esq.prioridade != 0) {
+//			return esq;
+//		} 
+//		else {
+//			return dir;
+//		}
+//	}
+//}
+
+// NO, PAI, ESQUERDA, DIREITA
+std::tuple<tupla, tupla, tupla, tupla>* heap::busca(int chave) {
+	if (chave > this->capacidadeAtual || chave < 0) {
+		return nullptr;
 	}
-	if (this->heapVetor[i].prioridade == chave) {
-		return this->heapVetor[i];
-	}
-	else {
-		tupla esq = busca(chave, filhoEsquerda(i));
-		tupla dir = busca(chave, filhoDireita(i));
-		if (esq.prioridade != 0) {
-			return esq;
-		} 
-		else {
-			return dir;
-		}
-	}
+	std::tuple<tupla, tupla, tupla, tupla> tuple;
+	tuple = std::make_tuple(this->heapVetor[chave], this->heapVetor[pai(chave)], this->heapVetor[filhoEsquerda(chave)], this->heapVetor[filhoDireita(chave)]);
+	return &tuple;
 }
 
 void heap::heapify(int tamanhoVetor, int i) {

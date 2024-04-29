@@ -21,7 +21,7 @@ namespace Heap {
 		void insere(tupla tupla);
 		tupla extraiMax();
 		void imprimeHeap();
-		tupla busca(int chave);
+		tupla busca(int chave, int i = 0);
 		void heapify(int tamanhoVetor, int i);
 		int pai(int i);
 		int filhoEsquerda(int i);

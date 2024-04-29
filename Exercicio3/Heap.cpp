@@ -62,17 +62,30 @@ tupla heap::extraiMax() {
 }
 
 void heap::imprimeHeap() {
-
+	// FALTA IMPRIMIR HEAP
 }
 
-tupla heap::busca(int chave) {
-	
-	// preguica 
-	// importante dar uma olhada depois
-	return tupla();
+tupla heap::busca(int chave, int i) {
+	if (this->heapVetor[i].prioridade < chave) {
+		return tupla();
+	}
+	if (this->heapVetor[i].prioridade == chave) {
+		return this->heapVetor[i];
+	}
+	else {
+		tupla esq = busca(chave, filhoEsquerda(i));
+		tupla dir = busca(chave, filhoDireita(i));
+		if (esq.prioridade != 0) {
+			return esq;
+		} 
+		else {
+			return dir;
+		}
+	}
 }
 
 void heap::heapify(int tamanhoVetor, int i) {
+	// HEAPIFY PARECE FALTAR DELETAR RESQUICIOS DE PONTEIROS
 	int esq = filhoEsquerda(i);
 	int dir = filhoDireita(i);
 	int maior = i;

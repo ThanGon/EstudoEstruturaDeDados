@@ -1,6 +1,7 @@
 #include "Heap.h"
 #include <iostream>
 #include <iterator>
+#include <iomanip>
 
 #pragma execution_character_set( "utf-8" )
 
@@ -25,7 +26,7 @@ heap::heap(int capacidade) {
 heap::heap(tupla vetor[], int capacidade) {
 	this->heapVetor = vetor;
 	this->capacidadeVetor = capacidade;
-	this->capacidadeAtual = capacidade - 1;
+	this->capacidadeAtual = capacidade;
 	for (int i = capacidade / 2; i >= 0; i--) {
 		heapify(capacidade, i);
 	}
@@ -61,6 +62,7 @@ void heap::insere(tupla tupla) {
 
 tupla heap::extraiMax() {
 	if (this->capacidadeAtual < 1) {
+		std::cout << "Heap vazio" << std::endl;
 		return tupla();
 	}
 	else {
@@ -78,6 +80,48 @@ void heap::imprimeHeap() {
 		std::cout << "Índice: " << i << "\t" << "Prioridade: " << this->heapVetor[i].prioridade << " :: " << "Elemento: " << this->heapVetor[i].elemento << std::endl;
 	}
 }
+
+
+void printSpaces(int count) {
+	for (int i = 0; i < count; ++i) {
+		std::cout << " ";
+	}
+}
+
+void heap::imprimeHeapArvore() {
+	int n = this->capacidadeAtual;
+
+	if (n == 0) {
+		std::cout << "Heap is empty" << std::endl;
+		return;
+	}
+
+	int levels = log2(n) + 1; // Calculate total levels in the tree
+	int maxDigits = this->capacidadeVetor; // Maximum digits for proper spacing
+
+	int levelNodes = 1;
+	int printedNodes = 0;
+	int level = 0;
+
+	while (printedNodes < n) {
+		int startIdx = printedNodes;
+		int endIdx = std::min(printedNodes + levelNodes, n);
+		printSpaces((1 << (levels - level)) - 1); // Calculate indentation
+
+		for (int i = startIdx; i < endIdx; ++i) {
+			// Print node value
+			std::cout << std::setw(maxDigits) << this->heapVetor[i].prioridade;
+			printSpaces((1 << (levels - level + 1)) - 1); // Space between nodes
+		}
+
+		std::cout << std::endl;
+		levelNodes *= 2;
+		printedNodes = endIdx;
+		++level;
+	}
+}
+
+
 
 //tupla heap::busca(int chave, int i) {
 //	if (this->heapVetor[i].prioridade < chave) {
@@ -105,11 +149,18 @@ std::tuple<tupla, tupla, tupla, tupla>* heap::busca(int chave) {
 	}
 	std::tuple<tupla, tupla, tupla, tupla> tuple;
 	tuple = std::make_tuple(this->heapVetor[chave], this->heapVetor[pai(chave)], this->heapVetor[filhoEsquerda(chave)], this->heapVetor[filhoDireita(chave)]);
+	if (filhoEsquerda(chave) > this->capacidadeAtual) {
+		//tuple = std::make_tuple(this->heapVetor[chave], this->heapVetor[pai(chave)], tupla(), tupla());
+		std::get<2>(tuple) = tupla();
+	}
+	if (filhoDireita(chave) > this->capacidadeAtual) {
+		//tuple = std::make_tuple(this->heapVetor[chave], this->heapVetor[pai(chave)], this->heapVetor[filhoEsquerda(chave)], tupla());
+		std::get<3>(tuple) = tupla();
+	}
 	return &tuple;
 }
 
 void heap::heapify(int tamanhoVetor, int i) {
-	// HEAPIFY PARECE FALTAR DELETAR RESQUICIOS DE PONTEIROS
 	int esq = filhoEsquerda(i);
 	int dir = filhoDireita(i);
 	int maior = i;

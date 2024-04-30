@@ -23,6 +23,7 @@ namespace Heap {
 		void insere(tupla tupla);
 		tupla extraiMax();
 		void imprimeHeap();
+		void imprimeHeapArvore();
 		std::tuple<tupla, tupla, tupla, tupla>* busca(int chave);
 		void heapify(int tamanhoVetor, int i);
 		int pai(int i);

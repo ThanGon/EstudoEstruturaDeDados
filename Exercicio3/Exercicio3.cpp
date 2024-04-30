@@ -20,7 +20,7 @@ int main()
 	START_SEED();
 	SetConsoleOutputCP(CP_UTF8);
 
-	tupla vetor[MAX_CAPACITY] = { tupla(12, RANDOMIZE()), tupla(17, RANDOMIZE()), tupla(8, RANDOMIZE()), tupla(2, RANDOMIZE()), tupla(3, RANDOMIZE()), tupla(1, RANDOMIZE() ), tupla(5, RANDOMIZE()), tupla(6, RANDOMIZE()), tupla(4, RANDOMIZE()), tupla(2, RANDOMIZE()) };
+	nodo vetor[MAX_CAPACITY] = { nodo(12, RANDOMIZE()), nodo(17, RANDOMIZE()), nodo(8, RANDOMIZE()), nodo(2, RANDOMIZE()), nodo(3, RANDOMIZE()), nodo(1, RANDOMIZE() ), nodo(5, RANDOMIZE()), nodo(6, RANDOMIZE()), nodo(4, RANDOMIZE()), nodo(2, RANDOMIZE()) };
 	heap* filaPrioridade = new heap(vetor, MAX_CAPACITY);
 
 	while (true) {
@@ -34,17 +34,17 @@ int main()
 
 		int opcao;
 		int prioridade, chave;
-		std::tuple<tupla, tupla, tupla, tupla>* busca;
+		std::tuple<nodo, nodo, nodo, nodo>* busca;
 		std::cin >> opcao;
 
 		switch (opcao) {
 		case 1:
 			std::cout << "Insira a prioridade do novo elemento (gerado aleatoriamente)" << std::endl;
 			std::cin >> prioridade;
-			filaPrioridade->insere(tupla(prioridade, RANDOMIZE()));
+			filaPrioridade->insere(nodo(prioridade, RANDOMIZE()));
 			break;
 		case 2: {
-			tupla max = filaPrioridade->extraiMax();
+			nodo max = filaPrioridade->extraiMax();
 			std::cout << "Elemento removido: " << max.elemento << " com prioridade máxima: " << max.prioridade << std::endl;
 			break;
 		}
@@ -56,7 +56,7 @@ int main()
 				std::cout << "Não encontrado" << std::endl;
 			}
 			else {
-				tupla t, p, e, d;
+				nodo t, p, e, d;
 				std::tie(t, p, e, d) = *busca;
 				std::cout << "Elemento encontrado: " << t.elemento << " com Prioridade: " << t.prioridade << std::endl;
 				std::cout << "Pai com prioridade: " << p.prioridade << std::endl;
@@ -88,7 +88,7 @@ int main()
 		std::cout << "Não encontrado" << std::endl;
 	}
 	else {
-		tupla t, p, e, d;
+		nodo t, p, e, d;
 		std::tie(t, p, e ,d) = *filaPrioridade->busca(9);
 		std::cout << t.prioridade << p.prioridade << std::endl;
 	}*/

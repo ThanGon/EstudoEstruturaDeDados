@@ -3,28 +3,28 @@
 
 namespace Heap {
 
-	class tupla {
+	class nodo {
 	public:
 		int prioridade;
 		int elemento;
-		tupla(int prioridade, int elemento);
-		tupla();
+		nodo(int prioridade, int elemento);
+		nodo();
 	};
 
 
 	class heap
 	{
 	public:
-		tupla* heapVetor;
+		nodo* heapVetor;
 		int capacidadeVetor, capacidadeAtual;
 		heap(int capacidade);
-		heap(tupla vetor[], int capacidade);
+		heap(nodo vetor[], int capacidade);
 		~heap();
-		void insere(tupla tupla);
-		tupla extraiMax();
+		void insere(nodo tupla);
+		nodo extraiMax();
 		void imprimeHeap();
 		void imprimeHeapArvore();
-		std::tuple<tupla, tupla, tupla, tupla>* busca(int chave);
+		std::tuple<nodo, nodo, nodo, nodo>* busca(int chave);
 		void heapify(int tamanhoVetor, int i);
 		int pai(int i);
 		int filhoEsquerda(int i);

@@ -97,9 +97,11 @@ tuple<no*, int> no::buscaPorPosicao(int posicao) {
 
 void no::imprimeLista() {
     no* atual = this;
+    int i = 0;
     while (atual != NULL) {
-        cout << atual->valor << " ";
+        cout << i << ":" << atual->valor << " ";
         atual = atual->prox;
+        i++;
     }
     cout << endl;
 }

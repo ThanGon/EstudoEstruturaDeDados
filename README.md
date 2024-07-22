@@ -6,3 +6,4 @@ Desenvolvido em ```C++```
 ## ⚠️ Recomendável testar em ambiente Windows
 Para melhor apresentação no terminal, foi utilizado APIs disponíveis no sistema operacional Windows (Exibição de caracteres em UTF-8 como diacríticos)
 
+#### Inclui solução para IDE Visual Studio
